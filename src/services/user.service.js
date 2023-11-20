@@ -74,9 +74,20 @@ import http_common from '../http_common';
             }
         }
     }
-
+    const getUserList = async(data)=>{
+        try {
+            let response = await axios.post(`${http_common}user/getUserList`, data)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
 
 
  export default  {
-    userLogin,userRegister,forgotPassword,resetPassword,verifyAccount
+    userLogin,userRegister,forgotPassword,resetPassword,verifyAccount, getUserList
  }

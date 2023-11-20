@@ -1,7 +1,9 @@
+import { Link, Navigate } from "react-router-dom";
 const Logo = require('../asset/img/logo-467x100.png');
 const profileImg = require('../asset/img/avatars/avatar.jpg');
 
 function App() {
+    const page = window.location.href.split('/')[window.location.href.split('/').length -1]
   return (
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
@@ -14,24 +16,33 @@ function App() {
                     Pages
                 </li>
 
-                <li class="sidebar-item active">
-                    <a class="sidebar-link" href="index.html">
+                <li class={`sidebar-item ${page == "dashboard" ? "active" :''}`}>
+                    <Link class="sidebar-link" to="/dashboard">
                         <i class="align-middle" data-feather="sliders"></i> <span
                             class="align-middle">Dashboard</span>
-                    </a>
+                    </Link>
                 </li>
 
-                <li class="sidebar-item">
+                <li class={`sidebar-item ${page == "profile" ? "active" :''}`}>
                     <a class="sidebar-link" href="pages-profile.html">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="pages-sign-in.html">
-                        <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-                    </a>
+                <li class={`sidebar-item ${page == "users" ? "active" :''}`}>
+                    <Link class="sidebar-link" to="/users">
+                        <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Users</span>
+                    </Link>
                 </li>
+                <li class="dropdown sidebar-item">
+                      <a href="javascript:void(0)" class="dropdown-toggle sidebar-link "  data-toggle="dropdown">CMS <span class="caret"></span></a>
+                    <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                     <div class="dropdown-header">Dropdown heading</div>
+                     <li><a href="#pictures">Pictures</a></li>
+                     <li><a href="#videos">Videeos</a></li>
+                     <li><a href="#awards">Awards</a></li>
+                     </ul>
+                 </li>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="pages-sign-up.html">

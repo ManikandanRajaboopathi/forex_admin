@@ -25,7 +25,7 @@ function App() {
                 let response = await userService.userLogin(payloads);
                 console.log("login",response.status)
                 if(response.status){
-                    localStorage.setItem("token",response.data.token)                
+                    localStorage.setItem("token",response.token)                
                     toast.success("Login Successfully!");
                     setTimeout(() => {                    
                         navigate('/dashboard');

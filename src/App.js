@@ -1,39 +1,51 @@
-import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // import Register from './components/Register'
-import Login from './pages/Login';
+import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Users from './pages/users'
-import PrivacyPolicy from './pages/privacy_policy'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
+import Faq from './cms/Faq'
+import PrivacyPolicy from './cms/PrivacyPolicy'
+import TermsCondition from './cms/terms_condition'
+import Profile from './pages/Profile'
 // import './assets/animate.min.css'
 
-
-function App() {
+function App () {
   return (
-
-    <RouterProvider router={ createBrowserRouter([
-      {
-        path: "/",
-        Component: Login,
-      },
-      {
-        path: "/dashboard",
-        Component: Dashboard,
-      },
-      {
-        path: "/users",
-        Component: Users,
-      },
-      {
-        path: "/privacy_policy",
-        Component: PrivacyPolicy,
-      },
-    ])} />
-  );
+    <RouterProvider
+      router={createBrowserRouter([
+        {
+          path: '/',
+          Component: Login
+        },
+        {
+          path: '/dashboard',
+          Component: Dashboard
+        },
+        {
+          path: '/users',
+          Component: Users
+        },
+        {
+          path: '/faq',
+          Component: Faq
+        },
+        {
+          path:'/privacy_policy',
+          Component:PrivacyPolicy
+        },
+        {
+          path:'/terms_condition',
+          Component:TermsCondition
+        },
+        {
+          path: '/profile',
+          Component: Profile
+        }
+      ])}
+    />
+  )
 }
 
-export default App;
+export default App

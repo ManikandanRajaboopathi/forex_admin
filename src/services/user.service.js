@@ -86,8 +86,46 @@ import http_common from '../http_common';
             }
         }
     }
+    const createFaq = async(data)=>{
+        try {
+            let response = await axios.post(`${http_common}admin/update-cms`, data)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
+    const updatePrivacy = async(data)=>{
+        try {
+            let response = await axios.put(`${http_common}admin/update-cms`, data)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
+    const getCms = async(data)=>{
+        try {
+            let response = await axios.get(`${http_common}admin/get-cms/${data}`, data)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
+
 
 
  export default  {
-    userLogin,userRegister,forgotPassword,resetPassword,verifyAccount, getUserList
+    userLogin,userRegister,forgotPassword,resetPassword,verifyAccount, getUserList,
+    createFaq, updatePrivacy, getCms
  }

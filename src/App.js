@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import Users from './pages/users'
 import 'react-toastify/dist/ReactToastify.css'
 import Faq from './cms/Faq'
+import FaqAdd from './cms/Faqadd'
 import PrivacyPolicy from './cms/PrivacyPolicy'
 import TermsCondition from './cms/terms_condition'
 import Profile from './pages/Profile'
@@ -30,6 +31,10 @@ function App () {
         {
           path: '/faq',
           Component: Faq
+        },
+        {
+          path: '/faqadd',
+          Component: FaqAdd
         },
         {
           path:'/privacy_policy',

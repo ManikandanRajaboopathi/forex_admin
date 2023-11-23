@@ -60,7 +60,7 @@ setValue(res.data.content)
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
   </div>
-  <input type="text" class="form-control" aria-label="Default" value={data.title} name="title" onChange={handleChange} aria-describedby="inputGroup-sizing-default" />
+  <input type="text" class="form-control" aria-label="Default" value={data && data.title} name="title" onChange={handleChange} aria-describedby="inputGroup-sizing-default" />
 </div>
           <div class='container-fluid p-0'>
             <ReactQuill theme='snow' value={value} onChange={(e)=>changeValue(e)} />

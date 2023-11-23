@@ -88,7 +88,7 @@ import http_common from '../http_common';
     }
     const createFaq = async(data)=>{
         try {
-            let response = await axios.post(`${http_common}admin/update-cms`, data)
+            let response = await axios.post(`${http_common}admin/add-faq`, data)
             return response.data        
         } catch (error) {
             return {
@@ -123,9 +123,20 @@ import http_common from '../http_common';
         }
     }
 
-
+    const getFaq = async(data)=>{
+        try {
+            let response = await axios.get(`${http_common}admin/get-faq-lists`,)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
 
  export default  {
     userLogin,userRegister,forgotPassword,resetPassword,verifyAccount, getUserList,
-    createFaq, updatePrivacy, getCms
+    createFaq, updatePrivacy, getCms, getFaq
  }

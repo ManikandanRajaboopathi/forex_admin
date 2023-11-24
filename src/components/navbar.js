@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import userService from "../services/user.service";
+import { ToastContainer, toast } from 'react-toastify';
 const profileImg = require('../asset/img/avatars/avatar.jpg')
 const avatarTwo = require('../asset/img/avatars/avatar-2.jpg')
 const avatarThree = require('../asset/img/avatars/avatar-3.jpg')
@@ -7,8 +8,25 @@ const avatarFour = require('../asset/img/avatars/avatar-4.jpg')
 const avatarFive = require('../asset/img/avatars/avatar-5.jpg')
 
 function App () {
+  const navigate = useNavigate();
+  const logOut=()=>{
+    // userService.userLogOut()
+    // .then((res)=>{
+    //   if(res.status){
+        localStorage.clear();
+        toast.success("Logout successfully!")
+        navigate('/')
+    //   }else{
+    //     toast.error(res.message)
+    //   }
+    // })
+    // .catch((e)=>{
+    //   toast.error(e.message)
+    // })
+  }
   return (
     <nav class='navbar navbar-expand navbar-light navbar-bg'>
+      <ToastContainer />
       <a class='sidebar-toggle js-sidebar-toggle'>
         <i class='hamburger align-self-center'></i>
       </a>
@@ -233,9 +251,9 @@ function App () {
                 Help Center
               </a>
               <div class='dropdown-divider'></div>
-              <a class='dropdown-item' href='#'>
+              <button class='dropdown-item' onClick={logOut}>
                 Log out
-              </a>
+              </button>
             </div>
           </li>
         </ul>

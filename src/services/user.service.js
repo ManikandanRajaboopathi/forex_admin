@@ -16,6 +16,18 @@ import http_common from '../http_common';
             }
         }
     }
+    const userLogOut = async(data)=>{
+        try {
+            let response = await axios.post(`${http_common}admin/userLogout`, data)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
 
     const userRegister = async(data)=>{
         try {
@@ -138,5 +150,5 @@ import http_common from '../http_common';
 
  export default  {
     userLogin,userRegister,forgotPassword,resetPassword,verifyAccount, getUserList,
-    createFaq, updatePrivacy, getCms, getFaq
+    createFaq, updatePrivacy, getCms, getFaq,userLogOut
  }

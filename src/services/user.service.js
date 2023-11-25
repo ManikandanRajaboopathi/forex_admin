@@ -147,8 +147,43 @@ import http_common from '../http_common';
             }
         }
     }
-
+    const getFaqById  = async(data)=>{
+        try {
+            let response = await axios.get(`${http_common}admin/get-faq/${data}`,)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
+    const updateFaq = async(data)=>{
+        try {
+            let response = await axios.put(`${http_common}admin/update-faq`, data)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
+    const deleteFaq  = async(data)=>{
+        try {
+            let response = await axios.delete(`${http_common}admin/delete-faq/${data}`,)
+            return response.data        
+        } catch (error) {
+            return {
+                status : false,
+                message : error.message ? error.message : "Some error occured",
+                data : null
+            }
+        }
+    }
  export default  {
     userLogin,userRegister,forgotPassword,resetPassword,verifyAccount, getUserList,
-    createFaq, updatePrivacy, getCms, getFaq,userLogOut
+    createFaq, updatePrivacy, getCms, getFaq,userLogOut, getFaqById, updateFaq, deleteFaq
  }

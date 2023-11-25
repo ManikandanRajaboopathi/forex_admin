@@ -1,13 +1,15 @@
 import Sidebar from '../components/sidebar'
 import Navbar from '../components/navbar'
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import userService from "../services/user.service";
 import moment from 'moment/moment';
+import { toast } from 'react-toastify';
 const Logo = require('../asset/img/logo-467x100.png');
 
 function App() {
     const [users, setUsers] = useState([]);
-    useEffect(() => {
+    const getFaqList =()=>{
         userService.getFaq().then((res) => {
             if (res.status) {
                 setUsers(res.data);
@@ -17,7 +19,19 @@ function App() {
         }).catch((e) => {
             console.error(e)
         })
+    }
+    useEffect(() => {
+        getFaqList();
     }, [])
+    const deleteFaq = (id)=>{
+        userService.deleteFaq(id).then((res) => {
+        toast.success(res.message)
+        getFaqList()
+        })
+        .catch((e)=>{
+            toast.error(e.message)
+        })
+    }
     return (
         <div class="wrapper">
             <Sidebar />
@@ -37,7 +51,7 @@ function App() {
                                     <div class="card-header flex justify-content-between">
 
                                         <h5 class="card-title mb-0">FAQ</h5>
-                                        <button className='btn btn-primary text-end'>Add FAQ</button>
+                                        <Link className='btn btn-primary text-end' to='/faqadd'>Add FAQ</Link>
                                     </div>
                                     <table class="table table-hover table-responsive my-0">
                                         <thead>
@@ -69,8 +83,8 @@ function App() {
                                                             </button>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li><a class="dropdown-item" href="#">View</a></li>
-                                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                                <li><a class="dropdown-item bg-danger" href="#">Delete</a></li>
+                                                                <li><Link class="dropdown-item" to={`/faqedit/${data._id}`}>Edit</Link></li>
+                                                                <li><button class="dropdown-item bg-danger" onClick={()=>deleteFaq(data._id)}>Delete</button></li>
                                                             </ul>
                                                         </div>
                                                     </td>
